@@ -1,4 +1,5 @@
-﻿using Afak.Data;
+﻿using Afak.Collections;
+using Afak.Data;
 using Afak.Models;
 using Afak.ViewModels;
 using Microsoft.AspNetCore.Hosting;
@@ -21,53 +22,8 @@ namespace Afak.Repo
             this.hostingEnvironment = hostingEnvironment;
         }
 
-        //many repos for every product to implement AddProduct
 
-        //public void AddProduct(ProductCreateVM model)
-
-        //{
-
-        //    string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "Uploads");
-
-        //    string uniqFileName = Guid.NewGuid().ToString() + "_" + model.photo.FileName;
-
-
-
-        //    string filePath = Path.Combine(uploadsFolder, uniqFileName);
-
-
-
-        //    model.photo.CopyTo(new FileStream(filePath, FileMode.Create));
-
-
-
-        //    Product pro = new Product
-
-        //    {
-
-        //        Name = model.Name,
-
-        //        Price = model.Price,
-
-        //        Image = uniqFileName,
-
-
-        //        Category = model.Category
-
-
-
-
-
-        //    };
-
-
-
-        //    db.Products.Add(pro);
-
-        //    db.SaveChanges();
-
-        //}
-        //------------------***************
+    
         public void AddProduct(ProductCreateVM product)
         {
             //add image folders
@@ -188,17 +144,24 @@ namespace Afak.Repo
             }
         }
 
+      
+
         public IEnumerable<Product> GetAllProducts()
         {
             IEnumerable<Product> productsList = db.Products.ToList();
             return productsList;
         }
 
+      
+
+
         public Product GetProductByID(int id)
         {
             Product pro = db.Products.Find(id);
             return pro;
         }
+
+     
 
         public void Update(Product proToUpdate)
         {
@@ -238,6 +201,41 @@ namespace Afak.Repo
 
 
             db.SaveChanges();
+        }
+
+        public IEnumerable<Product> GeOrthodonticsProducts()
+        {
+            IEnumerable<Product> OrthodonticsProducts = db.Products.Where(p => p.Category == Category.Orthodontics).ToList();
+            return OrthodonticsProducts;
+        }
+
+        public IEnumerable<Product> GetAirCompressorProducts()
+        {
+            IEnumerable<Product> AirCompressorProducts = db.Products.Where(p => p.Category == Category.AirCompressor).ToList();
+            return AirCompressorProducts;
+        }
+
+        public IEnumerable<Product> GetSmallDeviceProducts()
+        {
+            IEnumerable<Product> SmallDeviceProducts = db.Products.Where(p => p.Category == Category.SmallDevice).ToList();
+            return SmallDeviceProducts;
+        }
+
+        public IEnumerable<Product> GetUnitProducts()
+        {
+            IEnumerable<Product> UnitProducts = db.Products.Where(p => p.Category == Category.Unit).ToList();
+            return UnitProducts;
+        }
+        public IEnumerable<Product> GetCompressorAccessoriesProducts()
+        {
+            IEnumerable<Product> CompressorAccessoriesProducts = db.Products.Where(p => p.Category == Category.CompressorAccessories).ToList();
+            return CompressorAccessoriesProducts;
+        }
+
+        public IEnumerable<Product> GetContraAccessoriesProducts()
+        {
+            IEnumerable<Product> ContraAccessoriesProducts = db.Products.Where(p => p.Category == Category.ContraAccessories).ToList();
+            return ContraAccessoriesProducts;
         }
     }
 }

@@ -15,5 +15,11 @@ namespace Afak.Repo
         IEnumerable<Product> GetAllProducts();
         void Delete(Product pro);
         void Update(Product proToUpdate);
+        IEnumerable<Product> GeOrthodonticsProducts();
+        IEnumerable<Product> GetAirCompressorProducts();
+        IEnumerable<Product> GetUnitProducts();
+        IEnumerable<Product> GetSmallDeviceProducts();
+        IEnumerable<Product> GetContraAccessoriesProducts();
+        IEnumerable<Product> GetCompressorAccessoriesProducts();
     }
 }

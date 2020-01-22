@@ -113,5 +113,35 @@ namespace Afak.Controllers
             return RedirectToAction("ManageProducts", "products");
         }
         //end update
+
+
+        public IActionResult Orthodontics()
+        {
+            return View();
+        }
+
+        public IActionResult AirCompressor()
+        {
+            return View();
+        }
+        public IActionResult Unit()
+        {
+            return View();
+        }
+        public IActionResult SmallDevice()
+        {
+            return View();
+        }
+        public IActionResult ContraAccessories()
+        {
+            return View();
+        }
+        public IActionResult CompressorAccessories()
+        {
+            return View();
+        }
+
+
+
     }
 }
