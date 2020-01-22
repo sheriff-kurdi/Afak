@@ -1,0 +1,122 @@
+﻿@model IEnumerable<Afak.Models.Product>
+
+@{
+    ViewData["Title"] = "ManageProducts";
+}
+
+<h2>ManageProducts</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Desc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageOne)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageTwo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageThree)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageFour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageFive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+     var photoPathOne = "~/Uploads/" + (item.ImageOne) ?? "niimage.jpg";
+     var photoPathTwo = "~/Uploads/" + (item.ImageTwo) ?? "niimage.jpg";
+     var photoPathThree = "~/Uploads/" + (item.ImageThree) ?? "niimage.jpg";
+     var photoPathFour = "~/Uploads/" + (item.ImageFour) ?? "niimage.jpg";
+     var photoPathFive = "~/Uploads/" + (item.ImageFive) ?? "niimage.jpg";
+        <tr>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Desc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+
+            @if (item.Category == Category.Unit)
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImageOne)
+                    <img style="width:200px; height:200px;" src="@photoPathOne" alt="IMG-PRODUCT" asp-append-version="true">
+
+                </td>
+            }
+
+            @if (item.Category == Category.AirCompressor)
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImageOne)
+                    <img style="width:200px; height:200px;" src="@photoPathOne" alt="IMG-PRODUCT" asp-append-version="true">
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImageTwo)
+                    <img style="width:200px; height:200px;" src="@photoPathTwo" alt="IMG-PRODUCT" asp-append-version="true">
+                </td>
+            }
+            @if (item.Category != Category.Unit && item.Category != Category.AirCompressor)
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImageOne)
+                    <img style="width:200px; height:200px;" src="@photoPathOne" alt="IMG-PRODUCT" asp-append-version="true">
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImageTwo)
+                    <img style="width:200px; height:200px;" src="@photoPathTwo" alt="IMG-PRODUCT" asp-append-version="true">
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImageThree)
+                    <img style="width:200px; height:200px;" src="@photoPathThree" alt="IMG-PRODUCT" asp-append-version="true">
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImageFour)
+                    <img style="width:200px; height:200px;" src="@photoPathFour" alt="IMG-PRODUCT" asp-append-version="true">
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImageFive)
+                    <img style="width:200px; height:200px;" src="@photoPathFive" alt="IMG-PRODUCT" asp-append-version="true">
+                </td>
+            }
+            <td>
+                <a asp-action="UpdateProduct" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
