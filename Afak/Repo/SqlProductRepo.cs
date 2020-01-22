@@ -41,14 +41,7 @@ namespace Afak.Repo
             OldProduct.Desc = UpdatedProduct.Desc;
             db.SaveChanges();
 
-            //OldProduct.ImageOne = UpdatedProduct.ImageOne;
-            //OldProduct.ImageTwo = UpdatedProduct.ImageTwo;
-            //OldProduct.ImageThree = UpdatedProduct.ImageThree;
-            //OldProduct.ImageFour = UpdatedProduct.ImageFour;
-            //OldProduct.ImageFive = UpdatedProduct.ImageFive;
-
-
-
+ 
             //if it  product and the user add Five photo
             if (UpdatedProduct.Category != Collections.Category.Unit && UpdatedProduct.Category != Collections.Category.AirCompressor )
             {
@@ -109,11 +102,7 @@ namespace Afak.Repo
              
 
 
-                //product.ImageOne = proToUpdate.ImageOne;
-                //product.ImageTwo = proToUpdate.ImageTwo;
-                //product.ImageThree = proToUpdate.ImageThree;
-                //product.ImageFour = proToUpdate.ImageFour;
-                //product.ImageFive = proToUpdate.ImageFive;
+             
          
                 db.SaveChanges();
 

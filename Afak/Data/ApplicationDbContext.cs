@@ -19,7 +19,7 @@ namespace Afak.Data
         //         => options.UseSqlite("Data Source=blogging.db");
 
         public DbSet<Product> Products { get; set; }
-        public DbSet<Offer> Orders { get; set; }
+        public DbSet<Offer> Offers { get; set; }
  
 
 
