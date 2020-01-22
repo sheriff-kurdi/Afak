@@ -2,6 +2,50 @@
 @{
     ViewData["Title"] = "ContraAccessoriesProducts";
 }
+@model IEnumerable<Product>
+
 
 <h2>ContraAccessoriesProducts</h2>
 
+@if (Model.Count() == 0)
+{
+    <div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <center>
+            <h3>
+                there is no products
+
+
+
+            </h3>
+        </center>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+    </div>
+}
+
+@foreach (Product item in Model)
+{
+    var photoPath = "~/Uploads/" + (item.ImageOne) ?? "niimage.jpg";
+
+    <div class="card text-white bg-success mb-auto" style="width: 18rem;">
+        <img style="width:200px; height:200px;" src="@photoPath" alt="IMG-PRODUCT" asp-append-version="true">
+        <div class="card-body">
+            <h5 class="card-title">Name: @item.Name</h5>
+            <h5 class="card-title">Price: @item.Price</h5>
+            <p class="card-text">Description: @item.Desc.</p>
+            <a asp-action="Details" asp-controller="ProductsCatalog" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
+        </div>
+    </div>
+}

@@ -22,23 +22,25 @@
                 @Html.DisplayNameFor(model => model.Price)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ImageOne)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImageTwo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImageThree)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImageFour)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImageFive)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Category)
             </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.ImageOne)*@
+                Image
+            </th>
+            @*<th>
+            @Html.DisplayNameFor(model => model.ImageTwo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageThree)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageFour)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageFive)
+        </th>*@
+
             <th></th>
         </tr>
     </thead>
@@ -66,55 +68,61 @@
                 @Html.DisplayFor(modelItem => item.Category)
             </td>
 
-            @if (item.Category == Category.Unit)
-            {
-                <td>
-                    @Html.DisplayFor(modelItem => item.ImageOne)
-                    <img style="width:200px; height:200px;" src="@photoPathOne" alt="IMG-PRODUCT" asp-append-version="true">
+            <td>
+                <img style="width:150px; height:150px;" src="@photoPathOne" alt="IMG-PRODUCT" asp-append-version="true">
 
-                </td>
-            }
+            </td>
 
-            @if (item.Category == Category.AirCompressor)
-            {
-                <td>
-                    @Html.DisplayFor(modelItem => item.ImageOne)
-                    <img style="width:200px; height:200px;" src="@photoPathOne" alt="IMG-PRODUCT" asp-append-version="true">
+            @*@if (item.Category == Category.Unit)
+        {
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageOne)
+                <img style="width:200px; height:200px;" src="@photoPathOne" alt="IMG-PRODUCT" asp-append-version="true">
 
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ImageTwo)
-                    <img style="width:200px; height:200px;" src="@photoPathTwo" alt="IMG-PRODUCT" asp-append-version="true">
-                </td>
-            }
-            @if (item.Category != Category.Unit && item.Category != Category.AirCompressor)
-            {
-                <td>
-                    @Html.DisplayFor(modelItem => item.ImageOne)
-                    <img style="width:200px; height:200px;" src="@photoPathOne" alt="IMG-PRODUCT" asp-append-version="true">
+            </td>
+        }
 
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ImageTwo)
-                    <img style="width:200px; height:200px;" src="@photoPathTwo" alt="IMG-PRODUCT" asp-append-version="true">
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ImageThree)
-                    <img style="width:200px; height:200px;" src="@photoPathThree" alt="IMG-PRODUCT" asp-append-version="true">
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ImageFour)
-                    <img style="width:200px; height:200px;" src="@photoPathFour" alt="IMG-PRODUCT" asp-append-version="true">
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ImageFive)
-                    <img style="width:200px; height:200px;" src="@photoPathFive" alt="IMG-PRODUCT" asp-append-version="true">
-                </td>
-            }
+        @if (item.Category == Category.AirCompressor)
+        {
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageOne)
+                <img style="width:200px; height:200px;" src="@photoPathOne" alt="IMG-PRODUCT" asp-append-version="true">
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageTwo)
+                <img style="width:200px; height:200px;" src="@photoPathTwo" alt="IMG-PRODUCT" asp-append-version="true">
+            </td>
+        }
+        @if (item.Category != Category.Unit && item.Category != Category.AirCompressor)
+        {
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageOne)
+                <img style="width:200px; height:200px;" src="@photoPathOne" alt="IMG-PRODUCT" asp-append-version="true">
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageTwo)
+                <img style="width:200px; height:200px;" src="@photoPathTwo" alt="IMG-PRODUCT" asp-append-version="true">
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageThree)
+                <img style="width:200px; height:200px;" src="@photoPathThree" alt="IMG-PRODUCT" asp-append-version="true">
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageFour)
+                <img style="width:200px; height:200px;" src="@photoPathFour" alt="IMG-PRODUCT" asp-append-version="true">
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageFive)
+                <img style="width:200px; height:200px;" src="@photoPathFive" alt="IMG-PRODUCT" asp-append-version="true">
+            </td>
+        }*@
             <td>
                 <a asp-action="UpdateProduct" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                <a asp-action="Details" asp-controller="ProductsCatalog" asp-route-id="@item.Id">Details</a>
+
             </td>
         </tr>
 }

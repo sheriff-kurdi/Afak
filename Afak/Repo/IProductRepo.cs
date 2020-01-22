@@ -14,7 +14,7 @@ namespace Afak.Repo
         Product GetProductByID(int id);
         IEnumerable<Product> GetAllProducts();
         void Delete(Product pro);
-        void Update(Product proToUpdate);
+        void Update(ProductCreateVM proToUpdate);
         IEnumerable<Product> GeOrthodonticsProducts();
         IEnumerable<Product> GetAirCompressorProducts();
         IEnumerable<Product> GetUnitProducts();

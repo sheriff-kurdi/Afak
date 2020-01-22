@@ -97,7 +97,7 @@
 
                         @*manage product*@
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="ManageProducts">AddProduct</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="ManageProducts">ManageProducts</a>
                         </li>
 
                         <li class="dropdown">
@@ -108,12 +108,13 @@
 
 
 
-                                <li><a href="index.html">Air Compressor</a></li>
-                                <li><a href="index.html">Unit </a></li>
-                                <li><a href="index.html">Small device</a></li>
-                                <li><a href="index.html">Contra & Contra accessories</a></li>
-                                <li><a href="index.html">Orthodontics</a></li>
-                                <li><a href="index.html">Compressor accessories</a></li>
+                                <li><a asp-controller="ProductsCatalog" asp-action="OrthodonticsProducts">Orthodontics Products</a></li>
+                                <li><a asp-controller="ProductsCatalog" asp-action="AirCompressorProducts">Air Compressor</a></li>
+                                <li><a asp-controller="ProductsCatalog" asp-action="SmallDeviceProducts"> SmallDevice Products</a></li>
+                                <li><a asp-controller="ProductsCatalog" asp-action="UnitProducts"> Unit Products</a></li>
+                                <li><a asp-controller="ProductsCatalog" asp-action="CompressorAccessoriesProducts"> Compressor Accessories Products</a></li>
+                                <li><a asp-controller="ProductsCatalog" asp-action="ContraAccessoriesProducts"> ContraAccessories Products</a></li>
+
                             </ul>
                         </li>
                     </ul>

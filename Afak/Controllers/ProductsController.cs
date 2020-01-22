@@ -103,11 +103,25 @@ namespace Afak.Controllers
         public IActionResult UpdateProduct(int id)
         {
             Product pro = productRepo.GetProductByID(id);
-            return View(pro);
+            ProductCreateVM CPro = new ProductCreateVM
+            {
+                Id = pro.Id,
+                Name = pro.Name,
+                Desc = pro.Desc,
+                Price = pro.Price,
+                Category = pro.Category,
+                ImageFive = pro.ImageFive,
+                ImageFour = pro.ImageFour,
+                ImageThree = pro.ImageThree,
+                ImageTwo = pro.ImageTwo,
+                ImageOne = pro.ImageOne
+
+            };
+            return View(CPro);
         }
 
         [HttpPost]
-        public IActionResult UpdateProduct(Product UpdatedPro)
+        public IActionResult UpdateProduct(ProductCreateVM UpdatedPro)
         {
             productRepo.Update(UpdatedPro);
             return RedirectToAction("ManageProducts", "products");

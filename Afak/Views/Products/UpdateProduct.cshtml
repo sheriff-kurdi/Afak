@@ -1,4 +1,4 @@
-﻿@model Afak.Models.Product
+﻿@model Afak.ViewModels.ProductCreateVM
 
 @{
     ViewData["Title"] = "UpdateProduct";
@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="UpdateProduct">
+        <form enctype="multipart/form-data" asp-action="UpdateProduct">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
@@ -29,49 +29,86 @@
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
 
-            @*@if (Model.Category != Category.Unit && Model.Category != Category.AirCompressor)
+            @if (Model.Category != Category.Unit && Model.Category != Category.AirCompressor)
             {
                 <div class="form-group">
-                    <label asp-for="ImageOne" class="control-label"></label>
-                    <input type="file" asp-for="ImageOne" class="form-control" />
-                    <span asp-validation-for="ImageOne" class="text-danger"></span>
+                    <label asp-for="photoOne" class="control-label"></label>
+                    <input type="file" asp-for="photoOne" class="form-control" />
+                    <span asp-validation-for="photoOne" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="ImageTwo" class="control-label"></label>
-                    <input type="file" asp-for="ImageTwo" class="form-control" />
-                    <span asp-validation-for="ImageTwo" class="text-danger"></span>
+                    <label asp-for="photoTwo" class="control-label"></label>
+                    <input type="file" asp-for="photoTwo" class="form-control" />
+                    <span asp-validation-for="photoTwo" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="ImageThree" class="control-label"></label>
-                    <input type="file" asp-for="ImageThree" class="form-control" />
-                    <span asp-validation-for="ImageThree" class="text-danger"></span>
+                    <label asp-for="photoThree" class="control-label"></label>
+                    <input type="file" asp-for="photoThree" class="form-control" />
+                    <span asp-validation-for="photoThree" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="ImageFour" class="control-label"></label>
-                    <input type="file" asp-for="ImageFour" class="form-control" />
-                    <span asp-validation-for="ImageFour" class="text-danger"></span>
+                    <label asp-for="photoFour" class="control-label"></label>
+                    <input type="file" asp-for="photoFour" class="form-control" />
+                    <span asp-validation-for="photoFour" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="ImageFive" class="control-label"></label>
-                    <input type="file" asp-for="ImageFive" class="form-control" />
-                    <span asp-validation-for="ImageFive" class="text-danger"></span>
+                    <label asp-for="photoFive" class="control-label"></label>
+                    <input type="file" asp-for="photoFive" class="form-control" />
+                    <span asp-validation-for="photoFive" class="text-danger"></span>
                 </div>
             }
 
             @if (Model.Category == Category.AirCompressor)
             {
 
+
+                <div class="form-group row">
+                    <label asp-for="photoOne" class="control-label"></label>
+                    <div class="col-sm-10">
+                        <div class="custom-file">
+
+                            <input asp-for="photoOne" class="form-control custom-file-input" />
+
+                            <label class="custom-file-label">Choose File...</label>
+                        </div>
+                        <span asp-validation-for="photoOne" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label asp-for="photoTwo" class="control-label"></label>
+                    <div class="col-sm-10">
+                        <div class="custom-file">
+
+                            <input type="file" asp-for="photoTwo" class="form-control custom-file-input" />
+
+                            <label class="custom-file-label">Choose File...</label>
+                        </div>
+                        <span asp-validation-for="photoTwo" class="text-danger"></span>
+                    </div>
+                </div>
             }
 
             @if (Model.Category == Category.Unit)
             {
+                <div class="form-group row">
+                    <label asp-for="photoOne" class="control-label"></label>
+                    <div class="col-sm-10">
+                        <div class="custom-file">
 
-            }*@
+                            <input  asp-for="photoOne" class="form-control custom-file-input" />
+
+                            <label class="custom-file-label">Choose File...</label>
+                        </div>
+                        <span asp-validation-for="photoOne" class="text-danger"></span>
+                    </div>
+                </div>
+            }
 
 
             <div class="form-group">
                 <label asp-for="Category" class="control-label"></label>
-                <select asp-for="Category" class="form-control"  asp-items="Html.GetEnumSelectList<Category>()" >
+                <select asp-for="Category" class="form-control" asp-items="Html.GetEnumSelectList<Category>()">
                     <option value=""> Please Sellect Category </option>
                 </select>
                 <span asp-validation-for="Category" class="text-danger"></span>

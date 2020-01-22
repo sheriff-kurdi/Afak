@@ -1,0 +1,117 @@
+﻿@model Afak.Models.Product
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Desc)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Desc)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        @if (Model.Category == Category.Unit)
+        {
+            var photoPathOne = "~/Uploads/" + (Model.ImageOne) ?? "niimage.jpg";
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ImageOne)
+            </dt>
+            <dd>
+                <img style="width:200px; height:200px;" src="@photoPathOne" alt="IMG-PRODUCT" asp-append-version="true">
+            </dd>
+        }
+
+        @if (Model.Category == Category.AirCompressor)
+        {
+            var photoPathOne = "~/Uploads/" + (Model.ImageOne) ?? "niimage.jpg";
+            var photoPathTwo = "~/Uploads/" + (Model.ImageTwo) ?? "niimage.jpg";
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ImageOne)
+            </dt>
+            <dd>
+                <img style="width:200px; height:200px;" src="@photoPathOne" alt="IMG-PRODUCT" asp-append-version="true">
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ImageTwo)
+            </dt>
+            <dd>
+                <img style="width:200px; height:200px;" src="@photoPathTwo" alt="IMG-PRODUCT" asp-append-version="true">
+            </dd>
+        }
+
+
+        @if (Model.Category != Category.Unit && Model.Category != Category.AirCompressor)
+        {
+             var photoPathOne = "~/Uploads/" + (Model.ImageOne) ?? "niimage.jpg";
+             var photoPathTwo = "~/Uploads/" + (Model.ImageTwo) ?? "niimage.jpg";
+             var photoPathThree = "~/Uploads/" + (Model.ImageThree) ?? "niimage.jpg";
+             var photoPathFour = "~/Uploads/" + (Model.ImageFour) ?? "niimage.jpg";
+             var photoPathFive = "~/Uploads/" + (Model.ImageFive) ?? "niimage.jpg";
+            <dt>
+                @Html.DisplayNameFor(model => model.ImageOne)
+            </dt>
+            <dd>
+                <img style="width:200px; height:200px;" src="@photoPathOne" alt="IMG-PRODUCT" asp-append-version="true">
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ImageTwo)
+            </dt>
+            <dd>
+                <img style="width:200px; height:200px;" src="@photoPathTwo" alt="IMG-PRODUCT" asp-append-version="true">
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ImageThree)
+            </dt>
+            <dd>
+                <img style="width:200px; height:200px;" src="@photoPathThree" alt="IMG-PRODUCT" asp-append-version="true">
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ImageFour)
+            </dt>
+            <dd>
+                <img style="width:200px; height:200px;" src="@photoPathFour" alt="IMG-PRODUCT" asp-append-version="true">
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ImageFive)
+            </dt>
+            <dd>
+                <img style="width:200px; height:200px;" src="@photoPathFive" alt="IMG-PRODUCT" asp-append-version="true">
+            </dd>
+        }
+
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+    </dl>
+</div>
+<div>
+    @*<a asp-action="Index">Back to List</a>*@
+    <a href='javascript:history.go(-1)'>Back to List</a>
+</div>

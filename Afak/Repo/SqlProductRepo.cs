@@ -23,7 +23,168 @@ namespace Afak.Repo
         }
 
 
-    
+
+        public void Update(ProductCreateVM UpdatedProduct)
+        {
+
+            //add image folders
+            string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "Uploads");
+
+
+
+
+            Product OldProduct = db.Products.Find(UpdatedProduct.Id);
+
+            OldProduct.Name = UpdatedProduct.Name;
+            OldProduct.Price = UpdatedProduct.Price;
+            OldProduct.Category = UpdatedProduct.Category;
+            OldProduct.Desc = UpdatedProduct.Desc;
+            db.SaveChanges();
+
+            //OldProduct.ImageOne = UpdatedProduct.ImageOne;
+            //OldProduct.ImageTwo = UpdatedProduct.ImageTwo;
+            //OldProduct.ImageThree = UpdatedProduct.ImageThree;
+            //OldProduct.ImageFour = UpdatedProduct.ImageFour;
+            //OldProduct.ImageFive = UpdatedProduct.ImageFive;
+
+
+
+            //if it  product and the user add Five photo
+            if (UpdatedProduct.Category != Collections.Category.Unit && UpdatedProduct.Category != Collections.Category.AirCompressor )
+            {
+                if (UpdatedProduct.photoOne != null)
+                {
+                    //add image one
+                    string uniqFileNameOne = Guid.NewGuid().ToString() + "_" + Path.GetFileName(UpdatedProduct.photoOne.FileName);
+                    string filePathOne = Path.Combine(uploadsFolder, uniqFileNameOne);
+                    UpdatedProduct.photoOne.CopyTo(new FileStream(filePathOne, FileMode.Create));
+
+                    OldProduct.ImageOne = uniqFileNameOne;
+                }
+
+                if (UpdatedProduct.photoTwo != null)
+                {
+
+                    //add image two
+                    string uniqFileNameTwo = Guid.NewGuid().ToString() + "_" + Path.GetFileName(UpdatedProduct.photoTwo.FileName);
+                    string filePathTwo = Path.Combine(uploadsFolder, uniqFileNameTwo);
+                    UpdatedProduct.photoTwo.CopyTo(new FileStream(filePathTwo, FileMode.Create));
+
+                    OldProduct.ImageTwo = uniqFileNameTwo;
+                }
+
+
+                if (UpdatedProduct.photoThree != null)
+                {
+                    //add image three
+                    string uniqFileNameThree = Guid.NewGuid().ToString() + "_" + Path.GetFileName(UpdatedProduct.photoThree.FileName);
+                    string filePathThree = Path.Combine(uploadsFolder, uniqFileNameThree);
+                    UpdatedProduct.photoThree.CopyTo(new FileStream(filePathThree, FileMode.Create));
+
+                    OldProduct.ImageThree = uniqFileNameThree;
+                }
+                if (UpdatedProduct.photoFour != null)
+                {
+
+                    //add image Four
+                    string uniqFileNameFour = Guid.NewGuid().ToString() + "_" + Path.GetFileName(UpdatedProduct.photoFour.FileName);
+                    string filePathFoure = Path.Combine(uploadsFolder, uniqFileNameFour);
+                    UpdatedProduct.photoFour.CopyTo(new FileStream(filePathFoure, FileMode.Create));
+
+                    OldProduct.ImageFour = uniqFileNameFour;
+                }
+                if (UpdatedProduct.photoFive != null)
+                {
+                    //add image Five
+                    string uniqFileNameFive = Guid.NewGuid().ToString() + "_" + Path.GetFileName(UpdatedProduct.photoFive.FileName);
+                    string filePathFive = Path.Combine(uploadsFolder, uniqFileNameFive);
+                    UpdatedProduct.photoFive.CopyTo(new FileStream(filePathFive, FileMode.Create));
+
+                    OldProduct.ImageFive = uniqFileNameFive;
+                }
+
+
+
+
+             
+
+
+                //product.ImageOne = proToUpdate.ImageOne;
+                //product.ImageTwo = proToUpdate.ImageTwo;
+                //product.ImageThree = proToUpdate.ImageThree;
+                //product.ImageFour = proToUpdate.ImageFour;
+                //product.ImageFive = proToUpdate.ImageFive;
+         
+                db.SaveChanges();
+
+            }
+
+
+            //if it Compressor product and the user add two photo
+            if (UpdatedProduct.Category == Collections.Category.AirCompressor )
+            {
+                OldProduct.ImageOne = OldProduct.ImageOne;
+                OldProduct.ImageTwo = OldProduct.ImageTwo;
+
+                if (UpdatedProduct.photoOne != null)
+                {
+                    //add image one
+                    string uniqFileNameOne = Guid.NewGuid().ToString() + "_" + Path.GetFileName(UpdatedProduct.photoOne.FileName);
+                    string filePathOne = Path.Combine(uploadsFolder, uniqFileNameOne);
+                    UpdatedProduct.photoOne.CopyTo(new FileStream(filePathOne, FileMode.Create));
+
+                    OldProduct.ImageOne = uniqFileNameOne;
+                }
+
+                if (UpdatedProduct.photoTwo != null)
+                {
+
+                    //add image two
+                    string uniqFileNameTwo = Guid.NewGuid().ToString() + "_" + Path.GetFileName(UpdatedProduct.photoTwo.FileName);
+                    string filePathTwo = Path.Combine(uploadsFolder, uniqFileNameTwo);
+                    UpdatedProduct.photoTwo.CopyTo(new FileStream(filePathTwo, FileMode.Create));
+
+                    OldProduct.ImageTwo = uniqFileNameTwo;
+                }
+
+                
+
+
+
+
+                
+                
+                
+
+                db.SaveChanges();
+
+            }
+
+
+            //if it unit product and the user add one photo
+            if (UpdatedProduct.Category == Collections.Category.Unit && UpdatedProduct.photoOne != null)
+            {
+
+                //add image one
+                string uniqFileNameOne = Guid.NewGuid().ToString() + "_" + Path.GetFileName(UpdatedProduct.photoOne.FileName);
+                string filePathOne = Path.Combine(uploadsFolder, uniqFileNameOne);
+                UpdatedProduct.photoOne.CopyTo(new FileStream(filePathOne, FileMode.Create));
+
+
+
+                //product.ImageOne = proToUpdate.ImageOne;
+                OldProduct.ImageOne = uniqFileNameOne;
+
+                db.SaveChanges();
+
+            }
+
+
+
+
+
+        }
+
         public void AddProduct(ProductCreateVM product)
         {
             //add image folders
@@ -65,6 +226,7 @@ namespace Afak.Repo
                 {
                     Name = product.Name,
                     Price = product.Price,
+                    Desc = product.Desc,
 
                     ImageOne = uniqFileNameOne,
                     ImageTwo = uniqFileNameTwo,
@@ -100,6 +262,7 @@ namespace Afak.Repo
                 {
                     Name = product.Name,
                     Price = product.Price,
+                    Desc = product.Desc,
                     ImageOne = uniqFileNameOne,
                     ImageTwo = uniqFileNameTwo,           
                     Category = product.Category
@@ -123,6 +286,7 @@ namespace Afak.Repo
                 {
                     Name = product.Name,
                     Price = product.Price,
+                    Desc = product.Desc,
                     ImageOne = uniqFileNameOne,
                     Category = product.Category
                 };
@@ -163,45 +327,7 @@ namespace Afak.Repo
 
      
 
-        public void Update(Product proToUpdate)
-        {
-
-            Product product = db.Products.Find(proToUpdate.Id);
-
-            product.Name = proToUpdate.Name;
-            product.Price = proToUpdate.Price;
-            product.Category = proToUpdate.Category;
-
-            //if it  product and the user add Five photo
-            if (product.Category != Collections.Category.Unit && product.Category != Collections.Category.AirCompressor
-                && product.ImageOne != null && product.ImageTwo != null
-                && product.ImageThree != null && product.ImageFour != null && product.ImageFive != null)
-            {
-                product.ImageOne = proToUpdate.ImageOne;
-                product.ImageTwo = proToUpdate.ImageTwo;
-                product.ImageThree = proToUpdate.ImageThree;
-                product.ImageFour = proToUpdate.ImageFour;
-                product.ImageFive = proToUpdate.ImageFive;
-            }
-
-            //if it Compressor product and the user add two photo
-            if (product.Category == Collections.Category.AirCompressor && product.ImageOne != null && product.ImageTwo != null)
-            {
-
-                product.ImageOne = proToUpdate.ImageOne;
-                product.ImageTwo = proToUpdate.ImageTwo;
-            }
-
-            //if it unit product and the user add one photo
-            if (product.Category == Collections.Category.Unit && product.ImageOne != null)
-            {
-                product.ImageOne = proToUpdate.ImageOne;
-
-            }
-
-
-            db.SaveChanges();
-        }
+       
 
         public IEnumerable<Product> GeOrthodonticsProducts()
         {
