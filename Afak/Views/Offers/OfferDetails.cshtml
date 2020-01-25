@@ -1,0 +1,43 @@
+﻿@model Afak.Models.Offer
+
+@{
+    ViewData["Title"] = "OfferDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>OfferDetails</h2>
+@{var photoPathOne = "~/Uploads/" + (Model.photo) ?? "niimage.jpg"; }
+<div>
+    <h4>Offer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Desc)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Desc)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.photo)
+        </dt>
+        <dd>
+            <img style="width:200px; height:200px;" src="@photoPathOne" alt="IMG-PRODUCT" asp-append-version="true">
+        </dd>
+    </dl>
+</div>
+<div>
+    
+    <a href='javascript:history.go(-1)'>Back to List</a>
+</div>

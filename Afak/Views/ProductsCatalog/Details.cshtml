@@ -3,115 +3,266 @@
 @{
     ViewData["Title"] = "Details";
 }
-
+<head>
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />
+</head>
 <h2>Details</h2>
 
 <div>
     <h4>Product</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Desc)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Desc)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-
-        @if (Model.Category == Category.Unit)
-        {
-            var photoPathOne = "~/Uploads/" + (Model.ImageOne) ?? "niimage.jpg";
-
-            <dt>
-                @Html.DisplayNameFor(model => model.ImageOne)
-            </dt>
-            <dd>
-                <img style="width:200px; height:200px;" src="@photoPathOne" alt="IMG-PRODUCT" asp-append-version="true">
-            </dd>
-        }
-
-        @if (Model.Category == Category.AirCompressor)
-        {
-            var photoPathOne = "~/Uploads/" + (Model.ImageOne) ?? "niimage.jpg";
-            var photoPathTwo = "~/Uploads/" + (Model.ImageTwo) ?? "niimage.jpg";
-
-            <dt>
-                @Html.DisplayNameFor(model => model.ImageOne)
-            </dt>
-            <dd>
-                <img style="width:200px; height:200px;" src="@photoPathOne" alt="IMG-PRODUCT" asp-append-version="true">
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.ImageTwo)
-            </dt>
-            <dd>
-                <img style="width:200px; height:200px;" src="@photoPathTwo" alt="IMG-PRODUCT" asp-append-version="true">
-            </dd>
-        }
-
-
-        @if (Model.Category != Category.Unit && Model.Category != Category.AirCompressor)
-        {
-             var photoPathOne = "~/Uploads/" + (Model.ImageOne) ?? "niimage.jpg";
-             var photoPathTwo = "~/Uploads/" + (Model.ImageTwo) ?? "niimage.jpg";
-             var photoPathThree = "~/Uploads/" + (Model.ImageThree) ?? "niimage.jpg";
-             var photoPathFour = "~/Uploads/" + (Model.ImageFour) ?? "niimage.jpg";
-             var photoPathFive = "~/Uploads/" + (Model.ImageFive) ?? "niimage.jpg";
-            <dt>
-                @Html.DisplayNameFor(model => model.ImageOne)
-            </dt>
-            <dd>
-                <img style="width:200px; height:200px;" src="@photoPathOne" alt="IMG-PRODUCT" asp-append-version="true">
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.ImageTwo)
-            </dt>
-            <dd>
-                <img style="width:200px; height:200px;" src="@photoPathTwo" alt="IMG-PRODUCT" asp-append-version="true">
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.ImageThree)
-            </dt>
-            <dd>
-                <img style="width:200px; height:200px;" src="@photoPathThree" alt="IMG-PRODUCT" asp-append-version="true">
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.ImageFour)
-            </dt>
-            <dd>
-                <img style="width:200px; height:200px;" src="@photoPathFour" alt="IMG-PRODUCT" asp-append-version="true">
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.ImageFive)
-            </dt>
-            <dd>
-                <img style="width:200px; height:200px;" src="@photoPathFive" alt="IMG-PRODUCT" asp-append-version="true">
-            </dd>
-        }
 
 
 
 
-        <dt>
+    @if (Model.Category == Category.Unit)
+    {
+        var photoPathOne = "/Uploads/" + (Model.ImageOne) ?? "niimage.jpg";
+        <div class="لسه مش جاهز">
+            @*<div class="container">
+                    <div class="row" style="width:100% !important">
+                        <div class="col col-md-3">
+                            <div class="img-container">
+                                <img style="width:100px; height:100px;" src="@photoPathOne" alt="IMG-PRODUCT" asp-append-version="true">
+                            </div>
+
+                        </div>
+                        <div class="col col-md-5 ">
+                            <div id="div">Changes will Be done here</div>
+                        </div>
+
+
+                        <div class="col col-md-2 ">
+                            <div class="price_name">
+                                <p>@Model.Name</p>
+                                <p>$ @Model.Price</p>
+                            </div>
+
+
+                        </div>
+                        <div class="col  col-md-2">
+                            <div class="desc">
+                                <p>@Model.Desc</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>*@
+        </div>
+
+        <div class="container">
+            <div class="card">
+                <div class="container-fliud">
+                    <div class="wrapper row">
+                        <div class="preview col-md-6">
+
+                            <div class="preview-pic tab-content">
+                                <div class="tab-pane active" id="pic-1"><img class="itemImg" src="@photoPathOne" /></div>
+
+                            </div>
+                            <ul class="preview-thumbnail nav nav-tabs">
+                                <li class="active"><a data-target="#pic-1" data-toggle="tab"><img class="5itemImg" src="@photoPathOne" /></a></li>
+
+                            </ul>
+
+                        </div>
+                        <div class="details col-md-6">
+                            <h3 class="product-title">@Model.Name</h3>
+                            <div class="rating">
+                                <div class="stars">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                </div>
+
+                            </div>
+                            <p class="product-description">@Model.Desc.</p>
+                            <h4 class="price">current price: <span>$ @Model.Price</span></h4>
+                            <h5 class="sizes">
+
+                                <span class="size" data-toggle="tooltip" title="small"></span>
+                                <span class="size" data-toggle="tooltip" title="medium"></span>
+                                <span class="size" data-toggle="tooltip" title="large"></span>
+                                <span class="size" data-toggle="tooltip" title="xtra large"></span>
+                            </h5>
+                            <h5 class="colors">
+                                colors:
+                                <span class="color orange not-available" data-toggle="tooltip" title="Not In store"></span>
+                                <span class="color green"></span>
+                                <span class="color blue"></span>
+                            </h5>
+                            <div class="action">
+
+                                <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    }
+
+
+    @if (Model.Category == Category.AirCompressor)
+    {
+        var photoPathOne = "/Uploads/" + (Model.ImageOne) ?? "niimage.jpg";
+        var photoPathTwo = "/Uploads/" + (Model.ImageTwo) ?? "niimage.jpg";
+
+
+        <div class="container">
+            <div class="card">
+                <div class="container-fliud">
+                    <div class="wrapper row">
+                        <div class="preview col-md-6">
+
+                            <div class="preview-pic tab-content">
+                                <div class="tab-pane active" id="pic-1"><img class="itemImg" src="@photoPathOne" /></div>
+                                <div class="tab-pane" id="pic-2"><img class="itemImg" src="@photoPathTwo  " /></div>
+
+                            </div>
+                            <ul class="preview-thumbnail nav nav-tabs">
+                                <li class="active"><a data-target="#pic-1" data-toggle="tab"><img class="5itemImg" src="@photoPathOne" /></a></li>
+                                <li><a data-target="#pic-2" data-toggle="tab"><img class="5itemImg" src="@photoPathTwo" /></a></li>
+
+                            </ul>
+
+                        </div>
+                        <div class="details col-md-6">
+                            <h3 class="product-title">@Model.Name</h3>
+                            <div class="rating">
+                                <div class="stars">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                </div>
+
+                            </div>
+                            <p class="product-description">@Model.Desc.</p>
+                            <h4 class="price">current price: <span>$ @Model.Price</span></h4>
+                            <h5 class="sizes">
+
+                                <span class="size" data-toggle="tooltip" title="small"></span>
+                                <span class="size" data-toggle="tooltip" title="medium"></span>
+                                <span class="size" data-toggle="tooltip" title="large"></span>
+                                <span class="size" data-toggle="tooltip" title="xtra large"></span>
+                            </h5>
+                            <h5 class="colors">
+                                colors:
+                                <span class="color orange not-available" data-toggle="tooltip" title="Not In store"></span>
+                                <span class="color green"></span>
+                                <span class="color blue"></span>
+                            </h5>
+                            <div class="action">
+
+                                <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+
+
+
+    @if (Model.Category != Category.Unit && Model.Category != Category.AirCompressor)
+    {
+        var photoPathOne = "/Uploads/" + (Model.ImageOne) ?? "niimage.jpg";
+        var photoPathTwo = "/Uploads/" + (Model.ImageTwo) ?? "niimage.jpg";
+        var photoPathThree = "/Uploads/" + (Model.ImageThree) ?? "niimage.jpg";
+        var photoPathFour = "/Uploads/" + (Model.ImageFour) ?? "niimage.jpg";
+        var photoPathFive = "/Uploads/" + (Model.ImageFive) ?? "niimage.jpg";
+
+
+
+
+        <div class="container">
+            <div class="card">
+                <div class="container-fliud">
+                    <div class="wrapper row">
+                        <div class="preview col-md-6">
+
+                            <div class="preview-pic tab-content">
+                                <div class="tab-pane active" id="pic-1"><img class="itemImg" src="@photoPathOne" /></div>
+                                <div class="tab-pane" id="pic-2"><img class="itemImg" src="@photoPathTwo" /></div>
+                                <div class="tab-pane" id="pic-3"><img class="itemImg" src="@photoPathThree" /></div>
+                                <div class="tab-pane" id="pic-4"><img class="itemImg" src="@photoPathFour" /></div>
+                                <div class="tab-pane" id="pic-5"><img class="itemImg" src="@photoPathFive" /></div>
+                            </div>
+                            <ul class="preview-thumbnail nav nav-tabs">
+                                <li class="active"><a data-target="#pic-1" data-toggle="tab"><img class="itemImg" src="@photoPathOne" /></a></li>
+                                <li><a data-target="#pic-2" data-toggle="tab"><img class="itemImg" src="@photoPathTwo" /></a></li>
+                                <li><a data-target="#pic-3" data-toggle="tab"><img class="itemImg" src="@photoPathThree" /></a></li>
+                                <li><a data-target="#pic-4" data-toggle="tab"><img class="itemImg" src="@photoPathFour" /></a></li>
+                                <li><a data-target="#pic-5" data-toggle="tab"><img class="itemImg" src="@photoPathFive" /></a></li>
+                            </ul>
+
+                        </div>
+                        <div class="details col-md-6">
+                            <h3 class="product-title">@Model.Name</h3>
+                            <div class="rating">
+                                <div class="stars">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                </div>
+
+                            </div>
+                            <p class="product-description">@Model.Desc.</p>
+                            <h4 class="price">current price: <span>$ @Model.Price</span></h4>
+                            <h5 class="sizes">
+
+                                <span class="size" data-toggle="tooltip" title="small"></span>
+                                <span class="size" data-toggle="tooltip" title="medium"></span>
+                                <span class="size" data-toggle="tooltip" title="large"></span>
+                                <span class="size" data-toggle="tooltip" title="xtra large"></span>
+                            </h5>
+                            <h5 class="colors">
+                                colors:
+                                <span class="color orange not-available" data-toggle="tooltip" title="Not In store"></span>
+                                <span class="color green"></span>
+                                <span class="color blue"></span>
+                            </h5>
+                            <div class="action">
+
+                                <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+
+
+
+    @*<p>
             @Html.DisplayNameFor(model => model.Category)
-        </dt>
-        <dd>
+        </p>
+        <p>
             @Html.DisplayFor(model => model.Category)
-        </dd>
-    </dl>
+        </p>*@
+
 </div>
 <div>
     @*<a asp-action="Index">Back to List</a>*@
     <a href='javascript:history.go(-1)'>Back to List</a>
 </div>
+
+
+
+
+
+
+

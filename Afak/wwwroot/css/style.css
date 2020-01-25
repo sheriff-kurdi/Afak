@@ -10,6 +10,136 @@
 /* --- pe-icon-7-stroke --- */
 
 
+/*my style sheet*/
+/*button stylee*/
+.button {
+	display: inline-block;
+	border-radius: 20px;
+	background-color: #4682B4;
+	border: none;
+	color: #a8f3f3;
+	text-align: center;
+	font-size: 28px;
+	padding: 8px;
+	width: 120px;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 5px;
+	height: 40px;
+}
+.button span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.3s;
+}
+
+.button span:after {
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
+}
+
+.button:hover span {
+	padding-right: 26px;
+}
+
+.button:hover span:after {
+	opacity: 1;
+	right: 0;
+}
+
+/*button stylee*/
+
+/*.offerImg{
+	width:250px;
+	height:300px;
+}*/
+.offerImg img {
+	width: 250px;
+	height: 300px;
+	width: 100% !important;
+	margin: auto !important;
+	text-align: center !important;
+}
+
+.offerImg:hover {
+	-webkit-transform: scale(1.2);
+	-moz-transform: scale(1.2);
+	-ms-transform: scale(1.2);
+	-o-transform: scale(1.2);
+	transform: scale(1.2);
+}
+
+.offerImg:hover {
+	width: 100%;
+	-webkit-transition: transform 0.9s ease;
+	-o-transition: transform 0.9s ease;
+	-moz-transition: transform 0.9s ease;
+	transition: transform 0.9s ease;
+	padding-left: 10px;
+}
+
+/*offer li style*/
+
+
+.pricing-content li {
+	border-top: 1px dotted #EFEFEF;
+	width: 96%;
+	color: #333;
+	margin: 0 auto;
+	padding: 15px 0;
+	padding-right: 35px;
+}
+
+.pricing-content li:first-child {
+	border-top: none;
+}
+
+.pricing-content li i {
+	float: right;
+}
+
+/*offer li style*/
+
+
+/*ImgHover*/
+.imgHover img {
+	width: 100% !important;
+	margin: auto !important;
+	text-align: center !important;
+}
+
+.imgHover:hover {
+	-webkit-transform: scale(0.9);
+	-moz-transform: scale(0.9);
+	-ms-transform: scale(0.9);
+	-o-transform: scale(0.9);
+	transform: scale(0.9);
+}
+
+.imgHover:hover {
+	width: 100%;
+	-webkit-transition: transform 0.9s ease;
+	-o-transition: transform 0.9s ease;
+	-moz-transition: transform 0.9s ease;
+	transition: transform 0.9s ease;
+	padding-left: 10px;
+}
+/*ImgHover*/
+.product-col {
+	height: 100% !important;
+}
+
+
+
+
+/*my style sheet*/
+
+
 navv {
 	height: 100px !important;
 }
@@ -1471,22 +1601,7 @@ a.scrollup i:hover {
 	margin:25px 0;
 }
 
-.pricing-content li {
-	border-top:1px dotted #EFEFEF;
-	width:75%;
-	color:#333;
-	margin:0 auto;
-	padding:15px 0;
-}
 
-.pricing-content li:first-child {
-	border-top:none;
-}
-
-.pricing-content li i {
-	float:right;
-
-}
 
 
 

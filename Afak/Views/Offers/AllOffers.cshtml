@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Afak.Models.Offer>
+
+@{
+    ViewData["Title"] = "AllOffers";
+}
+
+<h2>AllOffers</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<br /> <br /> <br /> <br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Desc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+      
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+    var photoPathOne = "~/Uploads/" + (item.photo) ?? "niimage.jpg";
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Desc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+     
+            <td>
+                <a asp-action="EditOffer" asp-route-id="@item.Id">Edit</a> | |
+                <a asp-action="OfferDetails" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="DeleteOffer" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

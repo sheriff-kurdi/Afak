@@ -6,25 +6,38 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Afak.Models;
+using Microsoft.AspNetCore.Identity;
+using Afak.Repo;
+//using Microsoft.AspNetCore.Identity;
+//using Microsoft.AspNet.Identity;
 
 namespace Afak.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IOfferRepo offerRepo;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger , IOfferRepo offerRepo)
         {
             _logger = logger;
+            this.offerRepo = offerRepo;
         }
 
         public IActionResult Index()
         {
-            return View();
+            IEnumerable<Offer> offers = offerRepo.GetAllOffers();
+            return View(offers);
         }
 
         public IActionResult Privacy()
         {
+            return View();
+        }
+
+        public IActionResult Admin()
+        {
+         
             return View();
         }
 

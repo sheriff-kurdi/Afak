@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -34,42 +41,42 @@
 
 
     @*<header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Afak</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Afak</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <partial name="_LoginPartial" />
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </header>*@
+            </nav>
+        </header>*@
 
     <div id="wrapper">
 
         <nav class="navbar navbar-custom navbar-fixed-top " role="navigation">
             <div class="top-area">
                 @*<div class="container">
-                    <div class="row">
-                        <div class="col-sm-6 col-md-6">
-                            <p class="bold text-left">Sunday - Thursday, 8am to 10pm </p>
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6">
+                                <p class="bold text-left">Sunday - Thursday, 8am to 10pm </p>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <p class="bold text-right">Call us now 011111111111</p>
+                            </div>
                         </div>
-                        <div class="col-sm-6 col-md-6">
-                            <p class="bold text-right">Call us now 011111111111</p>
-                        </div>
-                    </div>
-                </div>*@
+                    </div>*@
             </div>
             <div class="container navigation">
 
@@ -78,27 +85,39 @@
                         <i class="fa fa-bars"></i>
                     </button>
                     <a class="navbar-brand" href="index.html">
-                        <img src="img/logo.png" alt="" width="150" height="40" />
+                        <img src="/img/logo.png" alt="" width="150" height="40" />
                     </a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-right navbar-main-collapse ">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#testimonial">Home</a></li>
-                        <li><a href="#boxes">Service</a></li>
-                        <li><a href="#facilities">Facilities</a></li>
-                        <li><a href="#About">About</a></li>
+                        <li class="active">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        @*<li><a href="#boxes">Service</a></li>
+                            <li><a href="#facilities">Facilities</a></li>
+                            <li><a href="#About">About</a></li>*@
 
                         @*Add product*@
-                        <li class="nav-item">
+                        @*<li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="AddProduct">AddProduct</a>
-                        </li>
+                        </li>*@
 
                         @*manage product*@
-                        <li class="nav-item">
+                        @*<li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="ManageProducts">ManageProducts</a>
-                        </li>
+                        </li>*@
+
+                        @*Add offer*@
+                        @*<li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Offers" asp-action="AddOffer">Add Offer</a>
+                            </li>*@
+
+                        @*Manage offer*@
+                        @*<li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Offers" asp-action="AllOffers">Manage Offer</a>
+                            </li>*@
 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -117,6 +136,29 @@
 
                             </ul>
                         </li>
+
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <span class="badge custom-badge red pull-right">Extra</span>ADMIN <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+
+
+
+                                    <li><a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="AddProduct">AddProduct</a></li>
+                                    <li><a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="ManageProducts">ManageProducts</a></li>
+                                    <li> <a class="nav-link text-dark" asp-area="" asp-controller="Offers" asp-action="AddOffer">Add Offer</a></li>
+                                    <li><a class="nav-link text-dark" asp-area="" asp-controller="Offers" asp-action="AllOffers">Manage Offer</a></li>
+        
+
+                                </ul>
+                            </li>
+                        }
+
+                        <partial name="_LoginPartial" />
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -126,9 +168,9 @@
 
 
         @*//----------------*@
-    
-                @RenderBody()
-       
+
+        @RenderBody()
+
 
 
         <footer id="About">
@@ -225,11 +267,11 @@
                                 <div class="text-right">
                                     <div class="credits">
                                         <!--
-                                      All the links in the footer should remain intact.
-                                      You can delete the links only if you purchased the pro version.
-                                      Licensing information: https://bootstrapmade.com/license/
-                                      Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Medicio
-                                    -->
+                                          All the links in the footer should remain intact.
+                                          You can delete the links only if you purchased the pro version.
+                                          Licensing information: https://bootstrapmade.com/license/
+                                          Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Medicio
+                                        -->
                                         Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
                                     </div>
                                 </div>

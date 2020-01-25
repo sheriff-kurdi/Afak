@@ -37,6 +37,7 @@ namespace Afak
             services.AddRazorPages();
 
             services.AddScoped<IProductRepo, SqlProductRepo>();
+            services.AddScoped<IOfferRepo, SqlOfferRepo>();
 
         }
 

@@ -1,9 +1,15 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout_2.cshtml";
 }
 
+
+@model IEnumerable<Offer>
+
+<br /> <br /> <br />
+
 <!-- Section: intro -->
-<section id="testimonial" class="home-section paddingbot-60 parallax" data-stellar-background-ratio="0.5">
+@*<section id="testimonial" class="home-section paddingbot-60 parallax" data-stellar-background-ratio="0.5">
 
     <div class="carousel-reviews broun-block">
         <div class="container">
@@ -132,7 +138,7 @@
             </div>
         </div>
     </div>
-</section>
+</section>*@
 
 <!-- /Section: intro -->
 <!-- Section: boxes -->
@@ -196,9 +202,68 @@
 
 </section>
 <!-- /Section: boxes -->
-<!-- Section: services -->
-<section id="service" class="home-section nopadding paddingtop-60">
+<!-- Section: pricing -->
+<section id="pricing" class="home-section bg-gray paddingbot-60">
+    <div style="margin-bottom :30px" class="container marginbot-50">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <div class="wow lightSpeedIn" data-wow-delay="0.1s">
+                    <div class="section-heading text-center">
+                        <h2 class="h-bold">Health packages</h2>
+                        <p>Take charge of your health today with our specially designed health packages</p>
+                    </div>
+                </div>
+                <div class="divider-short"></div>
+            </div>
+        </div>
+    </div>
 
+    <div class="container">
+
+        <div class="row">
+
+            @foreach (Offer item in Model)
+            {
+                  var photoPath = "~/Uploads/" + (item.photo) ?? "niimage.jpg";
+
+                <div class="col-sm-4 pricing-box">
+                    <div class="wow bounceInUp" data-wow-delay="0.1s">
+                        <div class="pricing-content general">
+                            <h2><b>@item.Name</b></h2>
+                            <h3>$@item.Price<sup>.99</sup> <span>/ one time</span></h3>
+                            <ul>
+                                @*<li>Anthropometry (BMI, WH Ratio) <i class="fa fa-check icon-success"></i></li>
+        <li>Post Examination Review <i class="fa fa-check icon-success"></i></li>
+        <li>General Screening – Basic <i class="fa fa-check icon-success"></i></li>
+        <li><del>Health Screening Report</del> <i class="fa fa-times icon-danger"></i></li*@
+                                <img style="width:100%; height:250px;" src="@photoPath" alt="IMG-PRODUCT" asp-append-version="true">
+
+                            </ul>
+
+                            <div class="price-bottom">
+                               <p>
+                                   @item.Desc
+
+                                   <a asp-action="OfferDetails" asp-controller="Offers" asp-route-id="@item.Id">Details</a>
+                               </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+
+
+
+        </div>
+
+    </div>
+</section>
+<!-- /Section: pricing -->
+<!-- Section: services -->
+<section id="products" class="home-section nopadding paddingtop-60">
+    <br /> <br />
     <div class="container">
 
         <div class="row">

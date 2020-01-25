@@ -79,12 +79,15 @@ namespace Afak.Repo
             OldOffer.Price = updatedOffer.Price;
             OldOffer.Desc = updatedOffer.Desc;
 
-            //add image one
-            string uniqFileNameOne = Guid.NewGuid().ToString() + "_" + Path.GetFileName(updatedOffer.img.FileName);
-            string filePathOne = Path.Combine(uploadsFolder, uniqFileNameOne);
-            updatedOffer.img.CopyTo(new FileStream(filePathOne, FileMode.Create));
+            if(updatedOffer.img != null)
+            {
+                //add image one
+                string uniqFileNameOne = Guid.NewGuid().ToString() + "_" + Path.GetFileName(updatedOffer.img.FileName);
+                string filePathOne = Path.Combine(uploadsFolder, uniqFileNameOne);
+                updatedOffer.img.CopyTo(new FileStream(filePathOne, FileMode.Create));
 
-            OldOffer.photo = uniqFileNameOne;
+                OldOffer.photo = uniqFileNameOne;
+            }
 
             db.SaveChanges();
         }

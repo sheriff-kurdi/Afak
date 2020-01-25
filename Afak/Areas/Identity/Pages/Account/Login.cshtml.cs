@@ -56,6 +56,11 @@ namespace Afak.Areas.Identity.Pages.Account
 
         public async Task OnGetAsync(string returnUrl = null)
         {
+            //it's not the good way to seed user i know :D
+            // even pass have to be in user secrets but just for testing
+            var user = new IdentityUser { UserName = "sheriffelwany@gmail.com", Email = "Sheriff@gmail.com" };
+            var result = await _userManager.CreateAsync(user, /*configuration["AdminPass"]*/ "Test.123456");
+
             if (!string.IsNullOrEmpty(ErrorMessage))
             {
                 ModelState.AddModelError(string.Empty, ErrorMessage);
